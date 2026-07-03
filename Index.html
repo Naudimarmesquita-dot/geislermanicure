@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes - Manicure</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f0f5;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .card-cadastro {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(163, 116, 142, 0.15);
+            padding: 30px;
+            border-top: 8px solid #d4a3b8;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #4a3440;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: #8a707f;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #4a3440;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e0d0da;
+            border-radius: 8px;
+            background-color: #fffafc;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4a3b8;
+            background-color: #fff;
+        }
+
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .row .form-group {
+            flex: 1;
+        }
+
+        .btn-salvar {
+            width: 100%;
+            padding: 12px;
+            background-color: #d4a3b8;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-salvar:hover {
+            background-color: #bfa0bc;
+        }
+
+        /* Estilos da Tabela de Clientes */
+        .lista-clientes {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(163, 116, 142, 0.15);
+        }
+
+        .tabela-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #e0d0da;
+        }
+
+        th {
+            background-color: #fcf6f9;
+            color: #4a3440;
+        }
+
+        .btn-excluir {
+            background-color: #ff7675;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-excluir:hover {
+            background-color: #d63031;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card-cadastro">
+        <h2>Ficha de Cadastro</h2>
+        <p class="subtitle">Controle de Clientes - Manicure</p>
+
+        <form id="formCliente">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" placeholder="Ex: Maria Silva" required>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp</label>
+                    <input type="tel" id="whatsapp" placeholder="(11) 99999-9999" required>
+                </div>
+                <div class="form-group">
+                    <label for="nascimento">Data de Nascimento</label>
+                    <input type="date" id="nascimento">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="alergia">Possui Alergias?</label>
+                    <select id="alergia">
+                        <option value="Não">Não</option>
+                        <option value="Sim">Sim</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="diabetica">É Diabética?</label>
+                    <select id="diabetica">
+                        <option value="Não">Não</option>
+                        <option value="Sim">Sim</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="formato">Formato de Unha Preferido</label>
+                <select id="formato">
+                    <option value="Quadrada">Quadrada</option>
+                    <option value="Amendoada">Amendoada</option>
+                    <option value="Redonda">Redonda</option>
+                    <option value="Stiletto">Stiletto</option>
+                    <option value="Bailarina">Bailarina</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="observacoes">Observações Gerais</label>
+                <textarea id="observacoes" rows="2" placeholder="Restrições, cores favoritas, etc."></textarea>
+            </div>
+
+            <button type="submit" class="btn-salvar">Salvar Cliente</button>
+        </form>
+    </div>
+
+    <div class="lista-clientes">
+        <h2>Clientes Cadastradas</h2>
+        <div class="tabela-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>WhatsApp</th>
+                        <th>Alergia?</th>
+                        <th>Diabética?</th>
+                        <th>Formato</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaCorpo">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('formCliente');
+    const tabelaCorpo = document.getElementById('tabelaCorpo');
+
+    // Carregar clientes ao abrir a página
+    document.addEventListener('DOMContentLoaded', exibirClientes);
+
+    // Evento de envio do formulário
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Captura os valores digitados
+        const novaCliente = {
+            nome: document.getElementById('nome').value,
+            whatsapp: document.getElementById('whatsapp').value,
+            nascimento: document.getElementById('nascimento').value,
+            alergia: document.getElementById('alergia').value,
+            diabetica: document.getElementById('diabetica').value,
+            formato: document.getElementById('formato').value,
+            observacoes: document.getElementById('observacoes').value
+        };
+
+        // Pega a lista atual ou cria uma nova se estiver vazia
+        let listaClientes = JSON.parse(localStorage.getItem('clientes')) || [];
+        
+        // Adiciona a nova cliente na lista
+        listaClientes.push(novaCliente);
+        
+        // Salva de volta no navegador
+        localStorage.setItem('clientes', JSON.stringify(listaClientes));
+
+        // Limpa o formulário e atualiza a tabela
+        form.reset();
+        exibirClientes();
+    });
+
+    // Função para exibir as clientes na tabela
+    function exibirClientes() {
+        let listaClientes = JSON.parse(localStorage.getItem('clientes')) || [];
+        tabelaCorpo.innerHTML = '';
+
+        listaClientes.forEach((cliente, index) => {
+            const linha = document.createElement('tr');
+            
+            linha.innerHTML = `
+                <td><strong>${cliente.nome}</strong><br><small style="color: #888">${cliente.observacoes}</small></td>
+                <td>${cliente.whatsapp}</td>
+                <td>${cliente.alergia}</td>
+                <td>${cliente.diabetica}</td>
+                <td>${cliente.formato}</td>
+                <td>
+                    <button class="btn-excluir" onclick="excluirCliente(${index})">Excluir</button>
+                </td>
+            `;
+            
+            tabelaCorpo.appendChild(linha);
+        });
+    }
+
+    // Função para excluir uma cliente da lista
+    function excluirCliente(index) {
+        let listaClientes = JSON.parse(localStorage.getItem('clientes')) || [];
+        
+        if(confirm("Tem certeza que deseja remover esta cliente?")) {
+            listaClientes.splice(index, 1);
+            localStorage.setItem('clientes', JSON.stringify(listaClientes));
+            exibirClientes();
+        }
+    }
+</script>
+
+</body>
+</html>
